@@ -1,5 +1,6 @@
 import ClientDashboard from "./ClientDashboard";
 import { cleanUSZip } from "@/lib/zip";
+import { Suspense } from "react";
 
 export default function Page({
     searchParams,
@@ -7,5 +8,9 @@ export default function Page({
     searchParams: { zip?: string };
 }) {
     const initialZip = cleanUSZip(searchParams?.zip ?? "");
-    return <ClientDashboard initialZip={initialZip} />;
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <ClientDashboard initialZip={initialZip} />
+        </Suspense>
+    );
 }
