@@ -196,16 +196,16 @@ export default function Dashboard() {
 
                     <SuccessHeroSlider
                         items={[
-                            { src: "/success/success1.png", caption: "$400 CAMERAS ARE RINGING UP FOR $18 ...👀" },
-                            { src: "/success/success2.png", caption: "$5 GAMING LAPTOPS ON AMAZON🤫" },
-                            { src: "/success/success4.jpg", caption: "AIRPODS ARE GLITCHING TO 90% OFF🤯" },
-                            { src: "/success/success5.png", caption: "ENTIRE GAMING PC FOR $125 …🤫" },
-                            { src: "/success/successwin3.jpg", caption: "$250 VACUUMS FOR $0.01 ..👀" },
                             { src: "/success/success6.png", caption: "$500 T.V. FOR $65 😱" },
                             { src: "/success/success7.png", caption: "$215 TENT DOWN TO $0.75 … 🚨" },
-                            { src: "/success/success9.png", caption: "90% OFF IPADS GLITCH 🤯" },
+                            
                             { src: "/success/successwin11.jpg", caption: "EVERYTHING IS GLITCHING FOR 90% OFF 🤣" },
                             { src: "/success/success10.png", caption: "GAMING MONITORS FOR $20 😱" },
+                            { src: "/success/success2.png", caption: "$5 GAMING LAPTOPS ON AMAZON🤫" },
+                            { src: "/success/success4.jpg", caption: "AIRPODS ARE GLITCHING TO 90% OFF🤯" },
+                            
+                            { src: "/success/successwin3.jpg", caption: "$250 VACUUMS FOR $0.01 ..👀" },
+                            
                             
                         ]}
                         height={300}
