@@ -1,19 +1,19 @@
 [
     
     {
-        id: 87780,
-        item_name: "60 in. 0-Drawer Universal Storage Top Chest",
-        brand: "RIDGID",
-        current_price: 0.01,
-        previous_price: 649.00,
-        image_link: "https://images.thdstatic.com/productImages/27526a42-0497-462d-a426-2d8edb4a563f/svn/orange-ridgid-jobsite-boxes-60r-os-64_1000.jpg",
-        retailer: "Home Depot",
-        current_stock: 55,
-        distance_miles: 0,
-        price_last_updated: "2025-10-20T08:41:44",
-        current_update: "2025-10-19T20:33:25",
-        store_sku: "207058098",
-        upc: "0783965050272",
+        "id": 87780,
+        "item_name": "60 in. 0-Drawer Universal Storage Top Chest",
+        "brand": "RIDGID",
+        "current_price": 0.01,
+        "previous_price": 649.00,
+        "image_link": "https://images.thdstatic.com/productImages/27526a42-0497-462d-a426-2d8edb4a563f/svn/orange-ridgid-jobsite-boxes-60r-os-64_1000.jpg",
+        "retailer": "Home Depot",
+        "current_stock": 55,
+        "distance_miles": 0,
+        "price_last_updated": "2025-10-20T08:41:44",
+        "current_update": "2025-10-19T20:33:25",
+        "store_sku": "207058098",
+        "upc": "0783965050272",
     }
     
 ]
