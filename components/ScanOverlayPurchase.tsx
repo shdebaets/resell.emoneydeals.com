@@ -179,7 +179,11 @@ export default function ScanOverlayPurchase({
                         />
                     </div>
 
-                    <div className="mt-4 h-6 overflow-hidden relative">
+                    <div className="text-[11px] text-white/60 mt-4">
+                        {Math.round(progress * 100)}%
+                    </div>
+
+                    <div className="mt-2 h-6 overflow-hidden relative">
                         <AnimatePresence mode="wait" initial={false}>
                             <motion.div
                                 key={idx}

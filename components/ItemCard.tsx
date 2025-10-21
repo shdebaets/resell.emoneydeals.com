@@ -85,7 +85,7 @@ export default function ItemCard({
 
             <div className="flex-1" />
 
-            <div className="mt-3 rounded-xl border border-white/10 bg-black/30 p-3">
+            <div className="mt-3 rounded-xl border border-white/10 bg-black/30 p-3 w-full">
                 <div className="relative h-[68px] w-full overflow-hidden rounded-md">
                     <div
                         className="h-full w-full blur-[2px] opacity-90"
