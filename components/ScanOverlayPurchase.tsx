@@ -201,11 +201,9 @@ export default function ScanOverlayPurchase({
 
                     <SuccessHeroSlider
                         items={[
-                            { src: "/success/cc26c58d-4d4b-4ac1-8d73-a72bb721e5ab.jpg", caption: "RYOBI WORK LIGHTS RINGING $0.01 — TRUNKS FULL NOW" },
-                            { src: "/success/c5477e7d-9777-4808-9cb8-5269f43eb5b1.jpg", caption: "1¢ TECH IS RINGING ALL DAY — DON’T SLEEP" },
-                            { src: "/success/74ff36d5-92dd-446d-8484-f132c621c58c.png", caption: "$16 BOWL FOR $0 — CONFIRMED" },
-                            { src: "/success/2b49ffdc-7333-4ea7-8c24-f4d57eb0280e.png", caption: "SHARK CORDLESS FOR A PENNY — LIVE" },
-                            { src: "/success/bbf1594e-91b4-45dd-be13-7b2ee8067a3d.jpg", caption: "SMART LOCKS AT $0.04 EACH — CRAZY MARGINS" },
+                            { src: "/success/cc26c58d-4d4b-4ac1-8d73-a72bb721e5ab.jpg", caption: "HUNDREDS OF RYOBI LIGHTS FOR $0.01 RIGHT NOW" },
+                            { src: "/success/2b49ffdc-7333-4ea7-8c24-f4d57eb0280e.png", caption: "$200 SHARK VACUUMS FOR $20 RIGHT NOW" },
+                            { src: "/success/bbf1594e-91b4-45dd-be13-7b2ee8067a3d.jpg", caption: "SMART LOCKS AT $0.01 EACH RIGHT NOW" },
                             { src: "/success/198fdf17-948f-4f7d-8af2-cabe976aa30e.jpg", caption: "$549 → $0.01 AT THE REGISTER" },
                         ]}
                         height={300}
