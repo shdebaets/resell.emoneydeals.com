@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import "./globals.css";
 import { GoogleAnalytics } from '@next/third-parties/google';
 import GaProvider from "./ga-provider";
+import { Suspense } from "react";
 
 export const metadata = {
   metadataBase: new URL("https://emoney.example"),
@@ -30,12 +31,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className="h-full">
       <body className="min-h-dvh h-full flex flex-col overflow-x-hidden">
-        <TopProgress />
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-Z4EJZTQJCT'} />
-        <GaProvider />
+        <Suspense fallback={<div />}>
+          <TopProgress />
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-Z4EJZTQJCT'} />
+          <GaProvider />
+        </Suspense>
       </body>
     </html>
   );

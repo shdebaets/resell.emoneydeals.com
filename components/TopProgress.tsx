@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 export default function TopProgress() {
     const path = usePathname();
@@ -37,12 +38,14 @@ export default function TopProgress() {
     }, [path, qp?.toString()]);
 
     return (
-        <div className="fixed left-0 right-0 top-0 z-50 h-0.5 pointer-events-none">
-            <div
-                ref={bar}
-                className="h-full w-0 origin-left bg-gradient-to-r from-brand-purple to-brand-magenta transition-[width,opacity] duration-300 ease-out"
-                style={{ opacity: 0 }}
-            />
-        </div>
+        <Suspense fallback={<div />}>
+            <div className="fixed left-0 right-0 top-0 z-50 h-0.5 pointer-events-none">
+                <div
+                    ref={bar}
+                    className="h-full w-0 origin-left bg-gradient-to-r from-brand-purple to-brand-magenta transition-[width,opacity] duration-300 ease-out"
+                    style={{ opacity: 0 }}
+                />
+            </div>
+        </Suspense>
     );
 }

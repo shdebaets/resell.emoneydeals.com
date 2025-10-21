@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
-import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { isUSZip, cleanUSZip } from "@/lib/zip";
 import ItemCard from "@/components/ItemCard";
