@@ -1,6 +1,7 @@
 "use client";
 import clsx from "clsx";
 import { CityMarqueeChip } from "./MarqueeTextRotate";
+import { UpcStripe } from "./UpcStripe";
 
 type SafeItem = {
     id: string;
@@ -9,10 +10,12 @@ type SafeItem = {
     price: string;
     oldPrice?: string;
     image: string;
-    retailer: "eMoney Reselling";
+    retailer: string;
     stock_hint: string;
     distance_hint: string;
     updated_hint: string;
+    store_sku: string | null;
+    upc: string | null;
 };
 
 export default function ItemCard({
@@ -86,7 +89,7 @@ export default function ItemCard({
             <div className="flex-1" />
 
             <div className="mt-3 rounded-xl border border-white/10 bg-black/30 p-3 w-full">
-                <div className="relative h-[68px] w-full overflow-hidden rounded-md">
+                {/* <div className="relative h-[68px] w-full overflow-hidden rounded-md">
                     <div
                         className="h-full w-full blur-[2px] opacity-90"
                         style={{
@@ -95,10 +98,11 @@ export default function ItemCard({
                         }}
                     />
                     <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(110%_70%_at_50%_50%,transparent,rgba(0,0,0,.75))]" />
-                </div>
-                <div className="mt-3 flex flex-wrap gap-2">
-                    <Pill>SKU hidden</Pill>
-                    <Pill>UPC hidden</Pill>
+                </div> */}
+                <UpcStripe upc={item.upc ?? undefined} height={68} />
+                <div className="mt-3 flex flex-col items-center gap-2">
+                    <Pill className="text-center">SKU: {item.store_sku}</Pill>
+                    <Pill className="text-center">UPC: {item.upc}</Pill>
                 </div>
             </div>
 
@@ -130,9 +134,9 @@ function Chip({
     );
 }
 
-function Pill({ children }: { children: React.ReactNode }) {
+function Pill({ children, className }: { children: React.ReactNode; className?: string }) {
     return (
-        <span className="inline-flex items-center rounded-full border border-white/12 bg-white/[.055] px-3 py-[6px] text-[11px] text-white/75">
+        <span className={clsx("inline-flex items-center rounded-full border border-white/12 bg-white/[.055] px-3 py-[6px] text-[11px] text-white/75", className)}>
             {children}
         </span>
     );

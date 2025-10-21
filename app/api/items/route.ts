@@ -17,6 +17,8 @@ type RawItem = {
     location: string;
     image_link: string;
     retailer: string | null;
+    store_sku: string | null;
+    upc: string | null;
 };
 
 type SafeItem = {
@@ -30,6 +32,8 @@ type SafeItem = {
     stock_hint: string;
     distance_hint: string;
     updated_hint: string;
+    store_sku: string | null;
+    upc: string | null;
 };
 
 function stockHint(n: number): string {
@@ -77,6 +81,8 @@ export async function GET(req: Request) {
         stock_hint: stockHint(r.current_stock),
         distance_hint: distanceHint(r.distance_miles),
         updated_hint: updatedHint(r.price_last_updated || r.current_update),
+        store_sku: r.store_sku,
+        upc: r.upc,
     }));
 
     const count = Math.floor(350 + Math.random() * 550);

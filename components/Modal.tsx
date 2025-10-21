@@ -29,7 +29,7 @@ export default function Modal({
                 <div className="fixed inset-0 flex items-center justify-center px-4 py-8 overflow-y-auto">
                     <DialogPanel
                         transition
-                        className="w-full max-w-2xl rounded-2xl bg-black/70 shadow-glow p-6 text-left align-middle transition-all data-[closed]:opacity-0 data-[closed]:scale-95"
+                        className="relative w-full max-w-2xl rounded-2xl bg-black/70 shadow-glow p-6 text-left align-middle transition-all data-[closed]:opacity-0 data-[closed]:scale-95"
                     >
                         {children}
                     </DialogPanel>

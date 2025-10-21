@@ -188,8 +188,8 @@ export default function Dashboard() {
 
                 <div className="items-center justify-center text-center">
                     <div className="mt-6">
-                        <div className="inline-flex items-center justify-center rounded-xl px-4 py-2 font-semibold transition bg-[color:var(--card)] border border-white/10">
-                            <div className="w-[10px] h-[10px] rounded-full bg-green-400 animate-pulse"></div> &nbsp; REAL MEMBER WINS
+                        <div className="inline-flex items-center justify-center rounded-xl px-4 py-2 font-semibold transition bg-[color:var(--card)] border border-white/10" onClick={finalizeRoute}>
+                            <div className="w-[10px] h-[10px] rounded-full bg-green-400 animate-pulse"></div> &nbsp; Upgrade to VIP to Unlock These Deals 🔓
                         </div>
 
                     </div>
@@ -232,8 +232,12 @@ export default function Dashboard() {
 
                 <div className="flex items-center justify-center">
                     <button className="btn btn-primary mt-4 py-4! cursor-pointer hover:opacity-80 transition-all duration-200" onClick={finalizeRoute}>
-                        Upgrade to VIP {" "} &nbsp; <strong> %25 OFF</strong>
+                        Upgrade to VIP to Unlock These Deals 🔓
                     </button>
+                </div>
+
+                <div className="absolute top-0 right-0 w-16 h-16 rounded-full bg-red-600 flex items-center justify-center text-white font-bold text-sm -translate-x-1/3 -translate-y-1/3 shadow-glow">
+                        %25 OFF
                 </div>
             </Modal>
 

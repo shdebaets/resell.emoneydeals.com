@@ -62,7 +62,7 @@ export default function SuccessHeroSlider({
                     allowTouchMove
                     onSlideChange={(swiper) => setIdx(swiper.realIndex)}
                     className="select-none mt-4 mx-auto"
-                    style={{ height: cardH }}
+                    style={{ maxWidth: cardW, height: cardH }}
                 >
                     {pool.map(({ src, caption }, i) => (
                         <SwiperSlide key={`${src}-${i}`}>
