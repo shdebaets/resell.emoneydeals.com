@@ -184,7 +184,7 @@ export function SuccessHeroSlider({
                     allowTouchMove
                     onSlideChange={(swiper) => setIdx(swiper.realIndex)}
                     className="select-none mt-4 mx-auto"
-                    style={{ width: cardW, height: cardH }}
+                    style={{ height: cardH }}
                 >
                     {pool.map(({ src, caption }, i) => (
                         <SwiperSlide key={`${src}-${i}`}>
@@ -193,7 +193,7 @@ export function SuccessHeroSlider({
                                 onClick={() => setOpen(src)}
                                 className="relative block overflow-hidden rounded-2xl border border-white/10 shadow-2xl leading-none"
                                 style={{
-                                    width: cardW,
+                                    width: "100%",
                                     height: cardH,
                                     contain: "layout paint size",
                                     background: "transparent",

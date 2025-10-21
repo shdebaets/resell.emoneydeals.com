@@ -6,7 +6,7 @@ import ItemCard from "@/components/ItemCard";
 import Modal from "@/components/Modal";
 import SkeletonCard from "@/components/SkeletonCard";
 import { gaEvent } from "@/app/(lib)/ga";
-import SuccessCoverflow, { SuccessHeroSlider } from "@/components/SuccessCoverflow";
+import SuccessHeroSlider from "@/components/SuccessHeroSlider";
 
 const SIGNUP_URL = "https://www.emoneyreselling.com/getaccess";
 
@@ -74,7 +74,7 @@ export default function Dashboard({ initialZip }: { initialZip: string }) {
                 {data?.count ? (
                     <div className="mt-4 card p-4">
                         <div className="text-sm">
-                            You have <strong>{data.count.toLocaleString()}</strong> items down to a penny showing up near <strong>{zip}</strong> right now. Do you see how insane this is?!
+                            You have <strong>{data.count.toLocaleString()}</strong> items down to a penny showing up near <strong>{zip}</strong> right now.
                             <span className="ml-2 text-white/70">Click one of the deals to unlock.</span>
                         </div>
                     </div>
@@ -175,7 +175,7 @@ export default function Dashboard({ initialZip }: { initialZip: string }) {
                             { src: "/success/bbf1594e-91b4-45dd-be13-7b2ee8067a3d.jpg", caption: "SMART LOCKS AT $0.04 EACH — CRAZY MARGINS" },
                             { src: "/success/198fdf17-948f-4f7d-8af2-cabe976aa30e.jpg", caption: "$549 → $0.01 AT THE REGISTER" },
                         ]}
-                        height={330}
+                        height={300}
                         autoplayMs={1200}
                         className="mx-auto"
                     />

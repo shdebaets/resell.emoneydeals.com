@@ -97,6 +97,10 @@ export default function ItemCard({
                     <Pill>UPC hidden</Pill>
                 </div>
             </div>
+
+            <div className="btn btn-primary w-full mt-4 cursor-pointer select-none">
+                GET DEAL
+            </div>
         </button>
     );
 }

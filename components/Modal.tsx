@@ -1,8 +1,11 @@
 "use client";
-import { useEffect, useState } from "react";
-import { createPortal } from "react-dom";
-import { motion, AnimatePresence } from "framer-motion";
-import clsx from "clsx";
+import { Fragment } from "react";
+import {
+    Dialog,
+    DialogBackdrop,
+    DialogPanel,
+    Transition,
+} from "@headlessui/react";
 
 export default function Modal({
     open,
@@ -13,47 +16,25 @@ export default function Modal({
     onClose: () => void;
     children: React.ReactNode;
 }) {
-    const [mounted, setMounted] = useState(false);
+    return (
+        <Transition show={open} as={Fragment}>
+            <Dialog as="div" className="relative z-50" onClose={onClose}>
+                {/* Backdrop */}
+                <DialogBackdrop
+                    transition
+                    className="fixed inset-0 bg-black/70 backdrop-blur-xs transition-opacity data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150"
+                />
 
-    useEffect(() => {
-        setMounted(true);
-    }, []);
-
-    useEffect(() => {
-        const onEsc = (e: KeyboardEvent) => e.key === "Escape" && onClose();
-        document.addEventListener("keydown", onEsc);
-        return () => document.removeEventListener("keydown", onEsc);
-    }, [onClose]);
-
-    if (!mounted) return null;
-
-    return createPortal(
-        <AnimatePresence>
-            {open && (
-                <motion.div
-                    className="fixed inset-0 z-50 grid place-items-center bg-black/70 backdrop-blur-xs"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.25, ease: "easeOut" }}
-                    onClick={onClose}
-                >
-                    <motion.div
-                        className={clsx(
-                            "card max-w-2xl w-full p-6",
-                            "bg-black/70 rounded-2xl shadow-glow"
-                        )}
-                        initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                        animate={{ opacity: 1, scale: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.95, y: 10 }}
-                        transition={{ duration: 0.25, ease: "easeOut" }}
-                        onClick={(e) => e.stopPropagation()}
+                {/* Centered panel container */}
+                <div className="fixed inset-0 flex items-center justify-center px-4 py-8 overflow-y-auto">
+                    <DialogPanel
+                        transition
+                        className="w-full max-w-2xl rounded-2xl bg-black/70 shadow-glow p-6 text-left align-middle transition-all data-[closed]:opacity-0 data-[closed]:scale-95"
                     >
                         {children}
-                    </motion.div>
-                </motion.div>
-            )}
-        </AnimatePresence>,
-        document.body
+                    </DialogPanel>
+                </div>
+            </Dialog>
+        </Transition>
     );
 }
