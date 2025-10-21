@@ -141,7 +141,7 @@
         "brand": "MOTOROLA",
         "current_price": 0.03,
         "previous_price": 350.00,
-        "image_link": "/items/iphone.png",
+        "image_link": "/success/success2.png",
         "retailer": "Walmart",
         "current_stock": 55,
         "distance_miles": 0,
@@ -153,7 +153,7 @@
     {
         "id": 87790,
         "item_name": "Boost Mobile Samsung Galaxy A25 5G, 128gb, Black - Prepaid Smartphone",
-        "brand": "RIDGID",
+        "brand": "SAMSUNG",
         "current_price": 35.00,
         "previous_price": 299.00,
         "image_link": "/items/boostsamsung.png",
