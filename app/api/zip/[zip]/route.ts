@@ -4,9 +4,7 @@ import storesRaw from "@/data/stores.json";
 import coords from "@/data/coords.json";
 
 export const runtime = "edge";
-export const preferredRegion = "auto";
 export const dynamic = "force-dynamic";
-export const revalidate = 60 * 60 * 24;
 
 type ZipEntry = {
     zip_code: number;
