@@ -196,29 +196,17 @@ export default function Dashboard() {
 
                     <SuccessHeroSlider
                         items={[
-                            { src: "/success/906214d1-f74a-427a-9745-0d76e76ce16b.png", caption: "BOXES TO BANK IN 24H" },
-                            { src: "/success/78bd80e2-2c2b-4a68-ac30-89ce9dbed60d.png", caption: "PRO TOOLS AT PENNY PRICES" },
-                            { src: "/success/949ca9d4-5f82-4a40-9c87-2a61e22d27c0.jpg", caption: "SEALED POKÉMON MOVING CHEAP" },
-                            { src: "/success/99078559-e25f-42c7-a691-fe0b4e88c05b.jpg", caption: "GALAXY TAB HAUL LIVE" },
-                            { src: "/success/4dbf0823-7ec7-48ec-9786-c041503fcd2b.png", caption: "FIRE STICKS AT A PENNY — CART ‘EM" },
-                            { src: "/success/6908e66c-668f-4501-83fe-6770a5f3b024.jpg", caption: "$800 PHONES DOWN TO $74" },
-                            { src: "/success/4dcb9289-bdc5-4c28-81e7-96d6015fe614.png", caption: "NINTENDO SWITCH HAUL — STUPID LOW" },
-                            { src: "/success/ebbbaa5a-3ca0-47f0-a1cb-d66a8f1dac12.png", caption: "FREE CHIPOTLE MEALS — $16 BAG TOTAL → $0.00" },
-                            { src: "/success/8e4b238e-381b-4873-a0a2-dc236bfc18b7.jpg", caption: "SEALED POKÉMON AT DUMP PRICING" },
-                            { src: "/success/659a7d01-ff20-4a5a-9710-358b841ac6df.png", caption: "FIRE TV BULK AT PENNY-LEVEL" },
-                            { src: "/success/01c6e90b-dad7-4cc2-a0aa-550f02fcc6c7.webp", caption: "$350 BATHROOM VANITY COMBO FOR $0.01" },
-                            { src: "/success/16a091d8-1bd7-4cc2-907c-912882b40172.png", caption: "FAMILY MEALS RINGING $0.00 — LIVE" },
-                            { src: "/success/0fd30ad2-0f84-4a4f-860f-a304b324937d.png", caption: "$800+ IN LIGHTS FOR $0.01 EACH" },
-                            { src: "/success/c21df215-c58f-4ec5-a8a9-ceaa5ba6b93e.png", caption: "DYSON VACUUMS DOWN TO A PENNY — GO NOW" },
-                            { src: "/success/b946e987-dc13-4221-ac4d-03814d260d4f.png", caption: "GOOGLE NEST HUBS SCANNING $0.01 — RUN IT" },
-                            { src: "/success/d0406031-3b89-465d-a7ea-748bd78e36ef.jpg", caption: "CARTS OF POKÉMON FOR PENNIES — STOCK UP FAST" },
-                            { src: "/success/91702644-8188-4f87-b262-7fd40c5d9d7d.webp", caption: "$249 → $0.01 — CONFIRMED" },
-                            { src: "/success/5f57b9c0-9787-4e21-b151-4127b3cb8a21.png", caption: "$0.56 RECEIPT — NO TYPO" },
-                            { src: "/success/33c67520-e042-4663-9b6e-59821aaf4bce.jpg", caption: "INSTINCT 2S RINGING DIRT CHEAP" },
-                            { src: "/success/75e866bf-18a8-44af-8b58-f4138f8f216c.png", caption: "$500+ DOWN TO $0.01 — LIVE" },
-                            { src: "/success/54e6f19c-c305-48d5-ac3e-10cb5ddfbf77.png", caption: "TABLETS IN, PAYOUT OUT" },
-                            { src: "/success/124f290b-24df-4fec-b09e-7778f4c33e13.png", caption: "FOUR FIGURES LOADED" },
-                            { src: "/success/86b87719-9c9b-4abe-adb5-f1298b3c5d78.jpg", caption: "98% OFF VACUUMS HITTING AGAIN" }
+                            { src: "/success/success1.png", caption: "$400 CAMERAS ARE RINGING UP FOR $18 ...👀" },
+                            { src: "/success/success2.png", caption: "$5 GAMING LAPTOPS ON AMAZON🤫" },
+                            { src: "/success/success4.jpg", caption: "AIRPODS ARE GLITCHING TO 90% OFF🤯" },
+                            { src: "/success/success5.png", caption: "ENTIRE GAMING PC FOR $125 …🤫" },
+                            { src: "/success/successwin3.jpg", caption: "$250 VACUUMS FOR $0.01 ..👀" },
+                            { src: "/success/success6.png", caption: "$500 T.V. FOR $65 😱" },
+                            { src: "/success/success7.png", caption: "$215 TENT DOWN TO $0.75 … 🚨" },
+                            { src: "/success/success9.png", caption: "90% OFF IPADS GLITCH 🤯" },
+                            { src: "/success/successwin11.jpg", caption: "EVERYTHING IS GLITCHING FOR 90% OFF 🤣" },
+                            { src: "/success/success10.png", caption: "GAMING MONITORS FOR $20 😱" },
+                            
                         ]}
                         height={300}
                         autoplayMs={1200}
