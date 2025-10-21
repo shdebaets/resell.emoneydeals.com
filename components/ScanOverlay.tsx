@@ -99,11 +99,11 @@ export default function ScanOverlay({
 
                     <SuccessHeroSlider
                         items={[
-                            { src: "/success/86b87719-9c9b-4abe-adb5-f1298b3c5d78.jpg", caption: "98% OFF VACUUMS HITTING AGAIN" },
-                            { src: "/success/d96cb7ff-a02d-4f25-a219-f24e54c570ec.jpg", caption: "POLAROID CAMERAS 98% OFF — CLEARANCE IS HITTING" },
-                            { src: "/success/d0b30164-43ed-49ba-8d6f-841e06c90163.png", caption: "DEWALT FRAMING NAILER KIT: ONE PENNY RIGHT NOW" },
-                            { src: "/success/4654a519-5932-46a2-bf13-0abed17ff2be.png", caption: "40V XGT MAKITA — $0.01 TODAY" },
-                            { src: "/success/a4991336-170a-438a-9b32-193a41b3ae9a.jpg", caption: "WINDOW A/Cs 95–98% OFF — SUMMER PROFITS LOADING" },
+                            { src: "/success/success1.png", caption: "$400 CAMERAS ARE RINGING UP FOR $18 ...👀" },
+                            { src: "/success/success2.png", caption: "$5 GAMING LAPTOPS ON AMAZON🤫" },
+                            { src: "/success/success4.jpg", caption: "AIRPODS ARE GLITCHING TO 90% OFF🤯" },
+                            { src: "/success/success5.png", caption: "ENTIRE GAMING PC FOR $125 …🤫" },
+                            { src: "/success/successwin3.jpg", caption: "$250 VACUUMS FOR $0.01 ..👀" },
                         ]}
                         height={300}
                         autoplayMs={1200}
