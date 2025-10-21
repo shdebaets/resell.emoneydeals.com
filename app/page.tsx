@@ -94,14 +94,15 @@ export default function Landing() {
         />
         <div className="mx-auto z-10 max-w-[46rem] text-center">
           <RotatingHeadline />
-          <p className="mt-4 text-white/80">
+          <p className="mt-4 text-white/80 drop-shadow-2xl">
             Enter your ZIP to see what’s popping near you. No distractions, just results.
           </p>
 
           <div className="mt-8 mx-auto flex w-full max-w-md gap-3">
             <input
               autoFocus
-              className="input text-center text-lg"
+               className="w-full rounded-xl bg-black border border-white/10 px-4 py-3 outline-none focus:ring-4 focus:ring-brand-purple/50 shadow-[0_0_48px_theme(colors.brand.purple/0.75),0_0_18px_theme(colors.brand.magenta/0.55)] text-center text-lg"
+              // className="input text-center text-lg"
               placeholder="Enter US ZIP (e.g., 33101)"
               value={zip}
               onChange={(e) => setZip(e.target.value)}
@@ -109,7 +110,7 @@ export default function Landing() {
             />
             <button className="btn btn-primary" onClick={go}>Search</button>
           </div>
-          <p className="mt-2 text-xs text-white/60">US ZIP codes only.</p>
+          <p className="mt-2 text-xs text-white/60 drop-shadow-2xl">US ZIP codes only.</p>
 
           <ProofStrip />
         </div>
