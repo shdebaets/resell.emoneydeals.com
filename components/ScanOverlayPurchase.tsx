@@ -39,14 +39,14 @@ export default function ScanOverlayPurchase({
     totalMs?: number;
 }) {
     const titleId = useId();
-    
+
     const cityPhrases = useMemo(
         () => shuffle(uniq(cities ?? [])).slice(0, 6).map((c) => `Checking ${c}…`),
         [cities]
     );
 
     const tailSteps = useMemo(
-        () => ["Cooking deals…", "Finding nearby retailers…", "Items found!", "Preparing your results…"],
+        () => ["Items Found Near You!✅", "Preparing your results… 🔓"],
         []
     );
 
@@ -54,7 +54,7 @@ export default function ScanOverlayPurchase({
 
     const schedule = useMemo(() => {
         const minStepMs = 800;
-        const cityShare = 0.7;
+        const cityShare = 0.6;
         const cityTime = Math.max(minStepMs * cityPhrases.length, Math.round(totalMs * cityShare));
         const tailTime = Math.max(minStepMs * tailSteps.length, totalMs - cityTime);
 
