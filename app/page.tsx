@@ -26,9 +26,9 @@ export default function Landing() {
     const qs = new URLSearchParams({ zip: z, fsrc: "landing" });
     if (utm) new URLSearchParams(utm).forEach((v, k) => qs.append(k, v));
 
-    // gaEvent("zip_submit", { zip: z });
+    gaEvent("zip_submit", { zip: z });
 
-    // r.push(`/dashboard?${qs.toString()}`);
+    r.push(`/dashboard?${qs.toString()}`);
   };
 
   return (
