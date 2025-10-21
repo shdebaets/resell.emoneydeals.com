@@ -99,10 +99,10 @@ export default function ScanOverlay({
 
                     <SuccessHeroSlider
                         items={[
-                            { src: "/success/success1.png", caption: "$400 CAMERAS ARE RINGING UP FOR $18 ...👀" },
+                           
                             { src: "/success/success2.png", caption: "$5 GAMING LAPTOPS ON AMAZON🤫" },
                             { src: "/success/success4.jpg", caption: "AIRPODS ARE GLITCHING TO 90% OFF🤯" },
-                            { src: "/success/success5.png", caption: "ENTIRE GAMING PC FOR $125 …🤫" },
+                           
                             { src: "/success/successwin3.jpg", caption: "$250 VACUUMS FOR $0.01 ..👀" },
                         ]}
                         height={300}
