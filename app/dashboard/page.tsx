@@ -129,7 +129,7 @@ export default function Dashboard() {
                 {data?.count ? (
                     <div className="mt-4 card p-4">
                         <div className="text-sm">
-                            You have <strong>{data.count.toLocaleString()}</strong> items down to a penny showing up near <strong>{zip}</strong> right now.
+                            You have <strong>{data.count.toLocaleString()}</strong> items marked on hidden clearance showing up near <strong>{zip}</strong> right now.
                             <span className="ml-2 text-white/70">Click one of the deals to unlock.</span>
                         </div>
                     </div>
