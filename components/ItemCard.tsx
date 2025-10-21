@@ -74,8 +74,8 @@ export default function ItemCard({
 
             <div className="mt-3 min-h-[28px]">
                 <div className="flex min-w-0 items-center gap-2 whitespace-nowrap">
-                    <Chip className="max-w-[33%]">{`Stock ${item.stock_hint}`}</Chip>
-                    <Chip className="max-w-[33%]">{item.distance_hint}</Chip>
+                    <Chip>{`Stock ${item.stock_hint}`}</Chip>
+                    <Chip>{item.distance_hint}</Chip>
                 </div>
             </div>
 
