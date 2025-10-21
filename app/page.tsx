@@ -14,10 +14,25 @@ export default function Landing() {
   const utm = useMemo(() => new URLSearchParams(qp ?? undefined).toString(), [qp]);
   const [zip, setZip] = useState("");
   const [scanning, setScanning] = useState(false);
+  const [city, setCity] = useState<string | null>(null);
+  const [state, setState] = useState<string | null>(null);
 
-  const go = () => {
+  const go = async () => {
     const z = cleanUSZip(zip);
     if (!isUSZip(z)) return alert("Enter a valid US ZIP (e.g., 33101 or 33101-1234).");
+
+    const response = await fetch(`/api/zip/${z}`);
+
+    if (!response.ok) {
+      const data = await response.json();
+      return alert(data.error || "Error looking up ZIP.");
+    }
+
+    const data = await response.json();
+
+    setCity(data.city);
+    setState(data.state);
+
     setScanning(true);
   };
 
@@ -100,7 +115,7 @@ export default function Landing() {
         </div>
       </section>
 
-      {scanning && <ScanOverlay zip={cleanUSZip(zip)} onDone={finalizeRoute} />}
+      {scanning && <ScanOverlay zip={cleanUSZip(zip)} city={city} state={state} onDone={finalizeRoute} />}
     </div>
   );
 }

@@ -16,6 +16,7 @@ type RawItem = {
     store_state: string;
     location: string;
     image_link: string;
+    retailer: string | null;
 };
 
 type SafeItem = {
@@ -25,7 +26,7 @@ type SafeItem = {
     price: string;
     oldPrice?: string;
     image: string;
-    retailer: "eMoney Reselling";
+    retailer: string;
     stock_hint: string;
     distance_hint: string;
     updated_hint: string;
@@ -33,10 +34,10 @@ type SafeItem = {
 
 function stockHint(n: number): string {
     if (n <= 2) return "≤2";
-    if (n <= 5) return "3–5";
+    if (n <= 5) return "3-5";
     const lo = Math.max(1, Math.round(n * 0.8));
     const hi = Math.round(n * 1.2);
-    return `${lo}–${hi}`;
+    return `${lo}-${hi}`;
 }
 function distanceHint(mi: number): string {
     if (!Number.isFinite(mi)) return "~";
@@ -58,7 +59,7 @@ export async function GET(req: Request) {
     const zip = (searchParams.get("zip") || "").trim();
     if (!isUSZip(zip)) return NextResponse.json({ items: [], count: 0 });
 
-    const db = raw as RawItem[];
+    const db = raw as unknown as RawItem[];
 
     const shuffled = db
         .map((item) => ({ item, sort: Math.random() }))
@@ -72,7 +73,7 @@ export async function GET(req: Request) {
         price: r.current_price.toFixed(2),
         oldPrice: r.previous_price ? `$${r.previous_price.toFixed(2)}` : undefined,
         image: r.image_link,
-        retailer: "eMoney Reselling",
+        retailer: r.retailer || (Math.random() < 0.5 ? "Home Depot" : "Walmart"),
         stock_hint: stockHint(r.current_stock),
         distance_hint: distanceHint(r.distance_miles),
         updated_hint: updatedHint(r.price_last_updated || r.current_update),

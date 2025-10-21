@@ -1,5 +1,6 @@
 "use client";
 import clsx from "clsx";
+import { CityMarqueeChip } from "./MarqueeTextRotate";
 
 type SafeItem = {
     id: string;
@@ -16,10 +17,12 @@ type SafeItem = {
 
 export default function ItemCard({
     item,
+    cities,
     onClick,
     className,
 }: {
     item: SafeItem;
+    cities: string[];
     onClick: () => void;
     className?: string;
 }) {
@@ -39,13 +42,13 @@ export default function ItemCard({
                     <img
                         src={item.image}
                         alt=""
-                        className="h-full w-full object-cover blur-[2px] saturate-150 contrast-125 brightness-[1.08] select-none"
+                        className="h-full w-full object-cover select-none"
                         draggable={false}
                     />
-                    <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_90%_at_50%_10%,transparent,rgba(0,0,0,.55))]" />
-                    <span className="absolute left-1.5 top-1.5 inline-flex items-center gap-1 rounded-md bg-black/60 px-1.5 py-0.5 text-[10px] font-semibold tracking-wide text-white/90 backdrop-blur">
+                    {/* <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_90%_at_50%_10%,transparent,rgba(0,0,0,.55))]" /> */}
+                    {/* <span className="absolute left-1.5 top-1.5 inline-flex items-center gap-1 rounded-md bg-black/60 px-1.5 py-0.5 text-[10px] font-semibold tracking-wide text-white/90 backdrop-blur">
                         🔒 LOCKED
-                    </span>
+                    </span> */}
                 </div>
 
                 <div className="min-w-0 flex-1">
@@ -53,10 +56,10 @@ export default function ItemCard({
                         className="select-none pointer-events-none"
                         style={{ WebkitUserSelect: "none", userSelect: "none" }}
                     >
-                        <div className="text-[11px] leading-[14px] text-white/85 blur-[2.2px] opacity-85 [text-shadow:0_0_8px_rgba(0,0,0,.45)]">
+                        <div className="text-[11px] leading-[14px] text-white/85 [text-shadow:0_0_8px_rgba(0,0,0,.45)]">
                             {item.brand}
                         </div>
-                        <div className="mt-0.5 line-clamp-2 text-[12.5px] leading-4 text-white/95 blur-[2.2px] opacity-85 [text-shadow:0_0_10px_rgba(0,0,0,.5)] min-h-[32px]">
+                        <div className="mt-0.5 line-clamp-2 text-[12.5px] leading-4 text-white/95 [text-shadow:0_0_10px_rgba(0,0,0,.5)] min-h-[32px]">
                             {item.name}
                         </div>
                     </div>
@@ -73,9 +76,10 @@ export default function ItemCard({
             </div>
 
             <div className="mt-3 min-h-[28px]">
-                <div className="flex min-w-0 items-center gap-2 whitespace-nowrap">
-                    <Chip>{`Stock ${item.stock_hint}`}</Chip>
-                    <Chip>{item.distance_hint}</Chip>
+                <div className="flex flex-col items-start min-w-0 gap-2 whitespace-nowrap">
+                    <Chip>{item.retailer}</Chip>
+                    <CityMarqueeChip cities={cities} seedKey={item.id} />
+                    <span className="text-[11px] text-white/85 overflow-hidden text-ellipsis">✅ {item.stock_hint.split("-")[0]} Found</span>
                 </div>
             </div>
 
@@ -125,6 +129,7 @@ function Chip({
         </span>
     );
 }
+
 function Pill({ children }: { children: React.ReactNode }) {
     return (
         <span className="inline-flex items-center rounded-full border border-white/12 bg-white/[.055] px-3 py-[6px] text-[11px] text-white/75">
