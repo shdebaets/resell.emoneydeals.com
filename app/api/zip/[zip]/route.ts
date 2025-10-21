@@ -3,9 +3,6 @@ import zipData from "@/data/zips.json";
 import storesRaw from "@/data/stores.json";
 import coords from "@/data/coords.json";
 
-export const runtime = "edge";
-export const dynamic = "force-dynamic";
-
 type ZipEntry = {
     zip_code: number;
     city: string;
