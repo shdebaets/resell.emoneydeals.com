@@ -1,137 +1,226 @@
-import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+import { NextResponse, NextRequest } from "next/server";
 import zipData from "@/data/zips.json";
 import storesRaw from "@/data/stores.json";
+import coords from "@/data/coords.json";
+
+export const runtime = "edge";
+export const preferredRegion = "auto";
+export const dynamic = "force-dynamic";
+export const revalidate = 60 * 60 * 24;
 
 type ZipEntry = {
-    zip_code: number;
-    city: string;
-    state: string;
-    county: string;
-    latitude: number;
-    longitude: number;
+  zip_code: number;
+  city: string;
+  state: string;
+  county: string;
+  latitude: number;
+  longitude: number;
 };
 type StoreEntry = { store_id: string; postal_code: string; address: string };
 
 const zips: ZipEntry[] = zipData as ZipEntry[];
 const stores: StoreEntry[] = storesRaw as StoreEntry[];
 
-function haversineDistance(lat1: number, lon1: number, lat2: number, lon2: number) {
-    const toRad = (deg: number) => (deg * Math.PI) / 180;
-    const R = 3958.8; // miles
-    const dLat = toRad(lat2 - lat1);
-    const dLon = toRad(lon2 - lon1);
-    const a =
-        Math.sin(dLat / 2) ** 2 +
-        Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    return R * c;
-}
-
-const coordFile = fs.readFileSync(path.join(process.cwd(), "data/coords.txt"), "utf-8");
-const coordMap = new Map<number, { lat: number; lon: number }>();
-for (const raw of coordFile.split(/\r?\n/)) {
-    const line = raw.trim();
-    if (!line || line.startsWith("ZIP")) continue;
-    const parts = line.split(",").map((v) => v.trim());
-    if (parts.length < 3) continue;
-    const [zipStr, latStr, lonStr] = parts;
-    const zip = Number(zipStr), lat = Number(latStr), lon = Number(lonStr);
-    if (!Number.isFinite(zip) || !Number.isFinite(lat) || !Number.isFinite(lon)) continue;
-    coordMap.set(zip, { lat, lon });
+function haversine(lat1: number, lon1: number, lat2: number, lon2: number) {
+  const toRad = (d: number) => (d * Math.PI) / 180;
+  const R = 3958.8; // miles
+  const dLat = toRad(lat2 - lat1);
+  const dLon = toRad(lon2 - lon1);
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(a));
 }
 
 const zipByCode = new Map<number, ZipEntry>();
 for (const z of zips) zipByCode.set(z.zip_code, z);
 
-function topNUniqueCities(base: ZipEntry, baseCoord: { lat: number; lon: number }, n = 5) {
-    const sorted = [...zips]
-        .map((z) => ({ z, d: haversineDistance(baseCoord.lat, baseCoord.lon, z.latitude, z.longitude) }))
-        .sort((a, b) => a.d - b.d);
+const zipCodesSorted = Int32Array.from([...zipByCode.keys()].sort((a, b) => a - b));
 
-    const result: string[] = [];
-    const seen = new Set<string>();
-
-    result.push(base.city);
-    seen.add(base.city);
-
-    for (const { z } of sorted) {
-        if (result.length >= n) break;
-        const city = z.city;
-        if (!seen.has(city)) {
-            seen.add(city);
-            result.push(city);
-        }
-    }
-
-    return result.slice(0, n);
+const coordMap = new Map<number, { lat: number; lon: number }>();
+for (const c of coords as Array<{ zip: number; lat: number; lon: number }>) {
+  if (Number.isFinite(c.zip) && Number.isFinite(c.lat) && Number.isFinite(c.lon)) {
+    coordMap.set(c.zip, { lat: c.lat, lon: c.lon });
+  }
 }
 
-function nearestZip(zipCodesSorted: number[], target: number): number | null {
-    if (zipCodesSorted.length === 0) return null;
-    if (target <= zipCodesSorted[0]) return zipCodesSorted[0];
-    if (target >= zipCodesSorted[zipCodesSorted.length - 1]) return zipCodesSorted[zipCodesSorted.length - 1];
+const BUCKET = 0.5;
+const keyOf = (lat: number, lon: number) =>
+  `${Math.floor(lat / BUCKET)},${Math.floor(lon / BUCKET)}`;
 
-    let lo = 0, hi = zipCodesSorted.length - 1;
-    while (lo <= hi) {
-        const mid = (lo + hi) >> 1;
-        const val = zipCodesSorted[mid];
-        if (val === target) return val;
-        if (val < target) lo = mid + 1;
-        else hi = mid - 1;
+const zipBuckets = new Map<string, number[]>();
+zips.forEach((z, i) => {
+  const k = keyOf(z.latitude, z.longitude);
+  const arr = zipBuckets.get(k);
+  if (arr) arr.push(i);
+  else zipBuckets.set(k, [i]);
+});
+
+type StoreIdx = { i: number; lat: number; lon: number };
+const storeBuckets = new Map<string, StoreIdx[]>();
+stores.forEach((s, i) => {
+  const z = zipByCode.get(Number(s.postal_code));
+  if (!z) return;
+  const k = keyOf(z.latitude, z.longitude);
+  const arr = storeBuckets.get(k);
+  const entry = { i, lat: z.latitude, lon: z.longitude };
+  if (arr) arr.push(entry);
+  else storeBuckets.set(k, [entry]);
+});
+
+function neighborKeys(lat: number, lon: number, radius = 1) {
+  const baseLat = Math.floor(lat / BUCKET);
+  const baseLon = Math.floor(lon / BUCKET);
+  const keys: string[] = [];
+  for (let dy = -radius; dy <= radius; dy++) {
+    for (let dx = -radius; dx <= radius; dx++) {
+      keys.push(`${baseLat + dy},${baseLon + dx}`);
     }
-
-    const higher = zipCodesSorted[lo];
-    const lower = zipCodesSorted[hi];
-    return (target - lower) <= (higher - target) ? lower : higher;
+  }
+  return keys;
 }
 
-export async function GET(_req: NextRequest, { params }: { params: Promise<{ zip: string }> }) {
-    const { zip: zipStr } = await params;
+function nearestZip(sorted: Int32Array, target: number): number {
+  let lo = 0, hi = sorted.length - 1;
+  if (target <= sorted[0]) return sorted[0];
+  if (target >= sorted[hi]) return sorted[hi];
+  while (lo <= hi) {
+    const mid = (lo + hi) >> 1;
+    const v = sorted[mid]!;
+    if (v === target) return v;
+    if (v < target) lo = mid + 1;
+    else hi = mid - 1;
+  }
+  const higher = sorted[lo]!;
+  const lower = sorted[hi]!;
+  return target - lower <= higher - target ? lower : higher;
+}
 
-    const zip = Number(zipStr);
-    if (!Number.isFinite(zip)) {
-        return NextResponse.json({ error: "Invalid ZIP" }, { status: 400 });
+function topNUniqueCities(
+  base: ZipEntry,
+  baseCoord: { lat: number; lon: number },
+  n = 5
+) {
+  const result: string[] = [];
+  const seen = new Set<string>();
+
+  result.push(base.city);
+  seen.add(base.city);
+
+  for (let r = 0; r <= 3 && result.length < n; r++) {
+    const keys = neighborKeys(baseCoord.lat, baseCoord.lon, r);
+    const candidates: number[] = [];
+    for (const k of keys) {
+      const arr = zipBuckets.get(k);
+      if (arr) candidates.push(...arr);
     }
+    const sorted = candidates
+      .map((idx) => {
+        const z = zips[idx]!;
+        return {
+          city: z.city,
+          d: haversine(baseCoord.lat, baseCoord.lon, z.latitude, z.longitude),
+        };
+      })
+      .sort((a, b) => a.d - b.d);
 
-    let base = zipByCode.get(zip);
-    const zipCodesSorted = Array.from(zipByCode.keys()).sort((a, b) => a - b);
-
-    if (!base) {
-        const nz = nearestZip(zipCodesSorted, zip);
-        if (nz == null) {
-            return NextResponse.json({ error: "ZIP not found" }, { status: 404 });
-        }
-
-        base = zipByCode.get(nz)!;
+    for (const item of sorted) {
+      if (result.length >= n) break;
+      if (!seen.has(item.city)) {
+        seen.add(item.city);
+        result.push(item.city);
+      }
     }
+  }
 
-    const baseCoord = coordMap.get(zip) ?? { lat: base.latitude, lon: base.longitude };
+  return result.slice(0, n);
+}
 
-    const nearestStores = stores
-        .map((s) => {
-            const pzip = Number(s.postal_code);
-            const z = zipByCode.get(pzip);
-            if (!z) return null;
-            const dist = haversineDistance(baseCoord.lat, baseCoord.lon, z.latitude, z.longitude);
-            return { store: s, zip: z, distance: dist };
-        })
-        .filter((x): x is { store: StoreEntry; zip: ZipEntry; distance: number } => !!x)
-        .sort((a, b) => a.distance - b.distance)
-        .slice(0, 5);
+function nearestStores(
+  baseCoord: { lat: number; lon: number },
+  k = 5
+): StoreEntry[] {
+  let picks: { i: number; d: number }[] = [];
 
-    const addresses = nearestStores.map((x) => x.store.address);
-    const uniqueCities = topNUniqueCities(base, baseCoord, 5);
+  for (let r = 0; r <= 3; r++) {
+    const keys = neighborKeys(baseCoord.lat, baseCoord.lon, r);
+    const cand: StoreIdx[] = [];
+    for (const k of keys) {
+      const arr = storeBuckets.get(k);
+      if (arr) cand.push(...arr);
+    }
+    if (cand.length === 0) continue;
 
-    return NextResponse.json({
-        zip_code: base.zip_code,
-        city: base.city,
-        state: base.state,
-        county: base.county,
-        latitude: base.latitude,
-        longitude: base.longitude,
-        cities: uniqueCities,
-        addresses,
+    picks = cand
+      .map((c) => ({
+        i: c.i,
+        d: haversine(baseCoord.lat, baseCoord.lon, c.lat, c.lon),
+      }))
+      .sort((a, b) => a.d - b.d)
+      .slice(0, k);
+
+    if (picks.length >= k) break;
+  }
+
+  return picks.map((p) => stores[p.i]!);
+}
+
+const MAX_CACHE = 1000;
+const cache = new Map<number, any>();
+function setCache(zip: number, value: any) {
+  if (cache.size >= MAX_CACHE) {
+    const first = cache.keys().next().value as number | undefined;
+    if (first !== undefined) cache.delete(first);
+  }
+  cache.set(zip, value);
+}
+
+export async function GET(
+  _req: NextRequest,
+  ctx: { params: { zip: string } }
+) {
+  const zipNum = Number(ctx.params.zip);
+  if (!Number.isFinite(zipNum)) {
+    return NextResponse.json({ error: "Invalid ZIP" }, { status: 400 });
+  }
+
+  const hit = cache.get(zipNum);
+  if (hit) {
+    return NextResponse.json(hit, {
+      headers: {
+        "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=604800",
+      },
     });
+  }
+
+  const found = zipByCode.get(zipNum) ?? zipByCode.get(nearestZip(zipCodesSorted, zipNum));
+  if (!found) {
+    return NextResponse.json({ error: "ZIP not found" }, { status: 404 });
+  }
+
+  const baseCoord =
+    coordMap.get(zipNum) ?? { lat: found.latitude, lon: found.longitude };
+
+  const cities = topNUniqueCities(found, baseCoord, 5);
+  const storeList = nearestStores(baseCoord, 5);
+  const addresses = storeList.map((s) => s.address);
+
+  const body = {
+    zip_code: found.zip_code,
+    city: found.city,
+    state: found.state,
+    county: found.county,
+    latitude: found.latitude,
+    longitude: found.longitude,
+    cities,
+    addresses,
+  };
+
+  setCache(zipNum, body);
+
+  return NextResponse.json(body, {
+    headers: {
+      "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=604800",
+    },
+  });
 }
