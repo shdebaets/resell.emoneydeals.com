@@ -68,6 +68,25 @@ function topNUniqueCities(base: ZipEntry, baseCoord: { lat: number; lon: number 
     return result.slice(0, n);
 }
 
+function nearestZip(zipCodesSorted: number[], target: number): number | null {
+    if (zipCodesSorted.length === 0) return null;
+    if (target <= zipCodesSorted[0]) return zipCodesSorted[0];
+    if (target >= zipCodesSorted[zipCodesSorted.length - 1]) return zipCodesSorted[zipCodesSorted.length - 1];
+
+    let lo = 0, hi = zipCodesSorted.length - 1;
+    while (lo <= hi) {
+        const mid = (lo + hi) >> 1;
+        const val = zipCodesSorted[mid];
+        if (val === target) return val;
+        if (val < target) lo = mid + 1;
+        else hi = mid - 1;
+    }
+
+    const higher = zipCodesSorted[lo];
+    const lower = zipCodesSorted[hi];
+    return (target - lower) <= (higher - target) ? lower : higher;
+}
+
 export async function GET(_req: NextRequest, { params }: { params: Promise<{ zip: string }> }) {
     const { zip: zipStr } = await params;
 
@@ -76,9 +95,16 @@ export async function GET(_req: NextRequest, { params }: { params: Promise<{ zip
         return NextResponse.json({ error: "Invalid ZIP" }, { status: 400 });
     }
 
-    const base = zipByCode.get(zip);
+    let base = zipByCode.get(zip);
+    const zipCodesSorted = Array.from(zipByCode.keys()).sort((a, b) => a - b);
+
     if (!base) {
-        return NextResponse.json({ error: "ZIP not found" }, { status: 404 });
+        const nz = nearestZip(zipCodesSorted, zip);
+        if (nz == null) {
+            return NextResponse.json({ error: "ZIP not found" }, { status: 404 });
+        }
+
+        base = zipByCode.get(nz)!;
     }
 
     const baseCoord = coordMap.get(zip) ?? { lat: base.latitude, lon: base.longitude };
