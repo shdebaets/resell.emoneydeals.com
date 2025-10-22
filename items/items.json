@@ -96,7 +96,7 @@
         "brand": "Philips",
         "current_price": 100.00,
         "previous_price": 578.00,
-        "image_link": "TV.png",
+        "image_link": "/items/TV.png",
         "retailer": "Walmart",
         "current_stock": 4,
         "distance_miles": 0,
