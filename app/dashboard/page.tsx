@@ -181,10 +181,11 @@ export default function Dashboard() {
             </AnimatePresence>
 
             <Modal open={open} onClose={() => setOpen(false)}>
-                <h3 className="text-xl font-bold">ACCESS THOUSANDS OF 99% OFF DEALS NOW 🤫</h3>
-                <p className="text-sm text-white/70 mt-1">
-                    Upgrade to access our hidden clearance AI software
-                </p>
+                <div className="flex flex-col items-center justify-center text-center min-h-[60vh]">
+                    <h3 className="text-xl font-bold">ACCESS THOUSANDS OF 99% OFF DEALS NOW 🤫</h3>
+                    <p className="text-sm text-white/70 mt-1">
+                        Upgrade to access our hidden clearance AI software
+                    </p>
 
                 <div className="items-center justify-center text-center">
                     <div className="mt-6">
