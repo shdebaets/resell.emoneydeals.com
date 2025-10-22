@@ -197,17 +197,17 @@ export default function Dashboard() {
 
                     <SuccessHeroSlider
                         items={[
-                            { src: "public/success/16a091d8-1bd7-4cc2-907c-912882b40172.png", caption: "90% OFF DEWALT TOOLS GLITCH" },
+                            { src: "/success/16a091d8-1bd7-4cc2-907c-912882b40172.png", caption: "90% OFF DEWALT TOOLS GLITCH" },
                             
                             
                             { src: "/success/successwin11.jpg", caption: "EVERYTHING IS GLITCHING FOR 90% OFF 🤣" },
-                            { src: "public/success/4654a519-5932-46a2-bf13-0abed17ff2be.png", caption: "99% OFF LAWN MOWERS RIGHT NOW" },
+                            { src: "/success/4654a519-5932-46a2-bf13-0abed17ff2be.png", caption: "99% OFF LAWN MOWERS RIGHT NOW" },
                             { src: "/success/success4.jpg", caption: "AIRPODS ARE GLITCHING TO 90% OFF🤯" },
-                            { src: "public/success/4dbf0823-7ec7-48ec-9786-c041503fcd2b.png", caption: "90% OFF FIRESTICKS GLITCH" },
-                            { src: "public/success/4dcb9289-bdc5-4c28-81e7-96d6015fe614.png", caption: "HUNDREDS OF NINTENDO SWITCHES FOR $50" },
+                            { src: "/success/4dbf0823-7ec7-48ec-9786-c041503fcd2b.png", caption: "90% OFF FIRESTICKS GLITCH" },
+                            { src: "/success/4dcb9289-bdc5-4c28-81e7-96d6015fe614.png", caption: "HUNDREDS OF NINTENDO SWITCHES FOR $50" },
                             
                             
-                            { src: "public/success/6908e66c-668f-4501-83fe-6770a5f3b024.jpg", caption: "70% OFF IPHONES GLITCH" },
+                            { src: "/success/6908e66c-668f-4501-83fe-6770a5f3b024.jpg", caption: "70% OFF IPHONES GLITCH" },
                             
                             
                         ]}
