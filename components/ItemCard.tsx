@@ -82,7 +82,7 @@ export default function ItemCard({
                 <div className="flex flex-col items-start min-w-0 gap-2 whitespace-nowrap">
                     <Chip>{item.retailer}</Chip>
                     <CityMarqueeChip cities={cities} seedKey={item.id} />
-                    <span className="text-[11px] text-white/85 overflow-hidden text-ellipsis">✅ {item.stock_hint.split("-")[0]} Found</span>
+                    <span className="text-[11px] text-white/85 overflow-hidden text-ellipsis">✅ {item.stock_hint.split("-")[0]} Found</span> 
                 </div>
             </div>
 
