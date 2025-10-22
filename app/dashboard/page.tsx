@@ -222,7 +222,7 @@ export default function Dashboard() {
 
                 <div className="flex items-center justify-center">
                     <button className="btn btn-primary mt-4 py-4! cursor-pointer hover:opacity-80 transition-all duration-200" onClick={finalizeRoute}>
-                        Upgrade to VIP to Unlock These Deals 🔓
+                        GET ACCESS 🔓
                     </button>
                 </div>
 
