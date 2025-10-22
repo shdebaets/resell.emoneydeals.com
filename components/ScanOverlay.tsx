@@ -100,7 +100,7 @@ export default function ScanOverlay({
                     <SuccessHeroSlider
                         items={[
                            
-                            { src: "public/success/124f290b-24df-4fec-b09e-7778f4c33e13.png.png", caption: "FREE $1,000 VISA GIFT CARD GLITCH" },
+                            { src: "/success/124f290b-24df-4fec-b09e-7778f4c33e13.png", caption: "FREE $1,000 VISA GIFT CARD GLITCH" },
                             { src: "/success/success4.jpg", caption: "AIRPODS ARE GLITCHING TO 90% OFF🤯" },
                            
                             { src: "/success/successwin3.jpg", caption: "$250 VACUUMS FOR $0.01 ..👀" },
