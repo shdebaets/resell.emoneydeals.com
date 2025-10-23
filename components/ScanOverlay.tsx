@@ -19,7 +19,7 @@ export default function ScanOverlay({
     onDone,
     city,
     state,
-    totalMs = 5200,
+    totalMs = 6000,
 }: { zip: string; city: string | null; state: string | null; onDone: () => void; totalMs?: number }) {
     const [progress, setProgress] = useState(0);
     const raf = useRef<number | null>(null);
