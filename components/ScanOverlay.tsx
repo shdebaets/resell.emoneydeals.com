@@ -101,9 +101,9 @@ export default function ScanOverlay({
                         items={[
                            
                             { src: "/success/emoneymain.jpeg", caption: "Welcome To The #1 Reselling Community, eMoney" },
-                            { src: "/success/reviews.png.jpg", caption: "With Over 1,000 5 Star Reviews And 5,000 Members" },
+                            { src: "/success/reviews.png.jpg", caption: "With Over 1,000 5 Star Reviews" },
                            
-                            { src: "/success/50k.png.jpg", caption: "And Hundreds Of Resellers Doing 10k+/Month" },
+                            { src: "/success/50k.png.jpg", caption: "And 5,000 Other Resellers" },
                         ]}
                         height={300}
                         autoplayMs={2000}
