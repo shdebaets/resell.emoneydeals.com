@@ -30,7 +30,7 @@ const shuffle = <T,>(arr: T[]) => {
 export default function ScanOverlayPurchase({
     item,
     cities,
-    totalMs = 7200,
+    totalMs = 4500,
     onDone,
 }: {
     item: SafeItem;
@@ -207,7 +207,7 @@ export default function ScanOverlayPurchase({
                            
                         ]}
                         height={300}
-                        autoplayMs={2500}
+                        autoplayMs={1500}
                         className="mx-auto mt-4"
                     />
 
