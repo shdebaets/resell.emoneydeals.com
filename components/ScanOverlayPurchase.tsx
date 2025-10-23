@@ -201,13 +201,13 @@ export default function ScanOverlayPurchase({
 
                     <SuccessHeroSlider
                         items={[
-                            { src: "/success/cc26c58d-4d4b-4ac1-8d73-a72bb721e5ab.jpg", caption: "HUNDREDS OF RYOBI LIGHTS FOR $0.01 RIGHT NOW" },
-                            { src: "/success/2b49ffdc-7333-4ea7-8c24-f4d57eb0280e.png", caption: "$200 SHARK VACUUMS FOR $20 RIGHT NOW" },
-                            { src: "/success/bbf1594e-91b4-45dd-be13-7b2ee8067a3d.jpg", caption: "SMART LOCKS AT $0.01 EACH RIGHT NOW" },
-                            { src: "/success/198fdf17-948f-4f7d-8af2-cabe976aa30e.jpg", caption: "$549 → $0.01 AT THE REGISTER" },
+                            { src: "/success/siteaipic.png.jpg", caption: "1) Find Clearance Products With AI " },
+                            { src: "/success/siteuploadpic.png.jpg", caption: "2) List them on Online Marketplaces" },
+                            { src: "/success/siteresellpic.png.jpg", caption: "3) Resell Them and Collect Profits" },
+                           
                         ]}
                         height={300}
-                        autoplayMs={1200}
+                        autoplayMs={2500}
                         className="mx-auto mt-4"
                     />
 
