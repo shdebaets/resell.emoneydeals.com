@@ -182,32 +182,28 @@ export default function Dashboard() {
 
             <Modal open={open} onClose={() => setOpen(false)}>
                 <div className="items-center justify-center text-center">
-                    <h3 className="text-xl font-bold">ACCESS THOUSANDS OF 99% OFF DEALS NOW 🤫</h3>
+                    <h3 className="text-xl font-bold">ACCESS EMONEY NOW 🤫</h3>
                     <p className="text-sm text-white/70 mt-1">
-                        Upgrade to access our hidden clearance AI software
+                        Unlock access to our Reselling Community Below
                     </p>
 
                 
                     <div className="mt-6">
                         <div className="inline-flex items-center justify-center rounded-xl px-4 py-2 font-semibold transition bg-[color:var(--card)] border border-white/10" onClick={finalizeRoute}>
-                            <div className="w-[10px] h-[10px] rounded-full bg-green-400 animate-pulse"></div> &nbsp; Upgrade to VIP to Unlock These Deals 🔓
+                            <div className="w-[10px] h-[10px] rounded-full bg-green-400 animate-pulse"></div> &nbsp; Get Full Access To Everything Below FOR FREE 🔓
                         </div>
 
                     </div>
 
                     <SuccessHeroSlider
                         items={[
-                            { src: "/success/16a091d8-1bd7-4cc2-907c-912882b40172.png", caption: "90% OFF DEWALT TOOLS GLITCH" },
+                            { src: "/success/hiddenclearancedeals.jpg", caption: "EXCLUSIVE HIDDEN CLEARANCE DEALS" },
                             
                             
-                            { src: "/success/successwin11.jpg", caption: "EVERYTHING IS GLITCHING FOR 90% OFF 🤣" },
-                            { src: "/success/4654a519-5932-46a2-bf13-0abed17ff2be.png", caption: "99% OFF LAWN MOWERS RIGHT NOW" },
-                            { src: "/success/success4.jpg", caption: "AIRPODS ARE GLITCHING TO 90% OFF🤯" },
-                            { src: "/success/4dbf0823-7ec7-48ec-9786-c041503fcd2b.png", caption: "90% OFF FIRESTICKS GLITCH" },
-                            { src: "/success/4dcb9289-bdc5-4c28-81e7-96d6015fe614.png", caption: "HUNDREDS OF NINTENDO SWITCHES FOR $50" },
+                            { src: "/success/pokemonsports.jpg", caption: "TRADING CARD RELEASES" },
+                            { src: "/success/seasonableflips.jpg", caption: "SEASONABLE FLIPS" },
+                            { src: "/success/collectibles.jpg", caption: "HIGH DEMAND COLLECTIBLES TO RESELL" },
                             
-                            
-                            { src: "/success/6908e66c-668f-4501-83fe-6770a5f3b024.jpg", caption: "70% OFF IPHONES GLITCH" },
                             
                             
                         ]}
@@ -223,12 +219,12 @@ export default function Dashboard() {
 
                 <div className="flex items-center justify-center">
                     <button className="btn btn-primary mt-4 py-4! cursor-pointer hover:opacity-80 transition-all duration-200" onClick={finalizeRoute}>
-                        GET ACCESS 🔓
+                        GET ACCESS FOR FREE 🔓
                     </button>
                 </div>
 
                 <div className="absolute top-0 right-0 w-16 h-16 rounded-full bg-red-600 flex items-center justify-center text-white font-bold text-sm -translate-x-1/3 -translate-y-1/3 shadow-glow">
-                        %25 OFF
+                        FREE TRIAL
                 </div>
             </Modal>
 
@@ -238,12 +234,12 @@ export default function Dashboard() {
 }
 
 function FomoBadge({
-    min = 17,
-    max = 33,
+    min = 170,
+    max = 330,
     durationMs = 15 * 60_000,
     autoReset = false,
     onExpire,
-    label = "bought in the last hour",
+    label = "claimed in the last hour",
 }: FomoProps) {
     const randInt = (a: number, b: number) => a + Math.floor(Math.random() * (b - a + 1));
     const [count] = useState(() => randInt(min, max));
