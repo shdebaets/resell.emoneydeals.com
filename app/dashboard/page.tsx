@@ -10,7 +10,7 @@ import SuccessHeroSlider from "@/components/SuccessHeroSlider";
 import { useSearchParams, useRouter } from "next/navigation";
 import ScanOverlayPurchase from "@/components/ScanOverlayPurchase";
 
-const SIGNUP_URL = "https://whop.com/checkout/plan_i6JRmSEuxO9Dl?d2c=true";
+const SIGNUP_URL = "https://whop.com/checkout/plan_jsROYnKAs4HoZ?d2c=true";
 
 type ApiResp = { items: any[]; count: number };
 
