@@ -223,7 +223,7 @@ export default function Dashboard() {
                     </button>
                 </div>
 
-                <div className="absolute top-0 left-1/2 w-16 h-16 rounded-full bg-red-600 flex items-center justify-center text-white font-bold text-sm -translate-x-1/3 -translate-y-1/3 shadow-glow">
+                <div className="absolute top-0 right-0 w-16 h-16 rounded-full bg-red-600 flex items-center justify-center text-white font-bold text-sm -translate-x-1/3 -translate-y-1/3 shadow-glow">
                         FREE TRIAL
                 </div>
             </Modal>
