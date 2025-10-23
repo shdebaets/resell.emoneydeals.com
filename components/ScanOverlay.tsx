@@ -100,10 +100,10 @@ export default function ScanOverlay({
                     <SuccessHeroSlider
                         items={[
                            
-                            { src: "/success/124f290b-24df-4fec-b09e-7778f4c33e13.png", caption: "FREE $1,000 VISA GIFT CARD GLITCH" },
-                            { src: "/success/success4.jpg", caption: "AIRPODS ARE GLITCHING TO 90% OFF🤯" },
+                            { src: "/success/emoneymain.jpeg", caption: "Welcome To The #1 Reselling Community, eMoney" },
+                            { src: "/success/reviews.png.jpg", caption: "With Over 1,000 5 Star Reviews And 5,000 Members" },
                            
-                            { src: "/success/successwin3.jpg", caption: "$250 VACUUMS FOR $0.01 ..👀" },
+                            { src: "/success/50k.png.jpg", caption: "Hundreds Of Resellers Doing 10k+/Month" },
                         ]}
                         height={300}
                         autoplayMs={1200}
