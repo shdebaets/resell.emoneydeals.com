@@ -106,7 +106,7 @@ export default function ScanOverlay({
                             { src: "/success/50k.png.jpg", caption: "And Hundreds Of Resellers Doing 10k+/Month" },
                         ]}
                         height={300}
-                        autoplayMs={1200}
+                        autoplayMs={2000}
                         className="mx-auto"
                     />
 
