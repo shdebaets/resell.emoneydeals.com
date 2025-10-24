@@ -107,7 +107,7 @@ export default function Dashboard() {
     return (
         <div className="relative min-h-dvh pb-20">
             <section className="container py-6">
-                <h1 className="text-2xl font-bold">🔥 Hot in your area</h1>
+                <h1 className="text-2xl font-bold">eMoney Deals</h1>
 
                 {!zip || !isUSZip(zip) ? (
                     <div className="mt-4 card p-6">
@@ -129,7 +129,7 @@ export default function Dashboard() {
                 {data?.count ? (
                     <div className="mt-4 card p-4">
                         <div className="text-sm">
-                            You have <strong>{data.count.toLocaleString()}</strong> items marked on hidden clearance showing up near <strong>{zip}</strong> right now.
+                            
                             <span className="ml-2 text-white/70">Click one of the deals to unlock.</span>
                         </div>
                     </div>
