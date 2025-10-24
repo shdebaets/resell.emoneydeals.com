@@ -242,7 +242,7 @@ function FomoBadge({
     onExpire,
     label = "claimed in the last hour",
 }: FomoProps) {
-    const randInt = (a: number, b: number) => a + Math.floor(Math.random() * (b - a + 1));
+    const randInt = (a: number, b: number) => a + Math.floor(Math.random() * (b - a + 100));
     const [count] = useState(() => randInt(min, max));
     const endTs = useRef<number>(Date.now() + durationMs);
     const [remaining, setRemaining] = useState<number>(durationMs);
