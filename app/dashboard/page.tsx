@@ -197,12 +197,13 @@ export default function Dashboard() {
 
                     <SuccessHeroSlider
                         items={[
-                            { src: "/success/hiddenclearancedeals.jpg", caption: "EXCLUSIVE HIDDEN CLEARANCE DEALS" },
+                            { src: "/success/insaneclearance.jpg", caption: "UNLOCK EXCLUSIVE HIDDEN CLEARANCE DEALS" },
                             
                             
-                            { src: "/success/pokemonsports.jpg", caption: "TRADING CARD RELEASES" },
-                            { src: "/success/seasonableflips.jpg", caption: "SEASONABLE FLIPS" },
-                            { src: "/success/collectibles.jpg", caption: "HIGH DEMAND COLLECTIBLES TO RESELL" },
+                            { src: "/success/IMG_8788.jpeg", caption: "TRADING CARD RELEASES" },
+                            { src: "/success/lego.png.jpg", caption: "HIGH DEMAND COLLECTIBLES TO RESELL" },
+                            { src: "/success/penny.png", caption: "PENNY CLEARANCE ITEMS" },
+                            { src: "/success/random.png", caption: "RANDOM RESELLABLE ITEMS" },
                             
                             
                             
