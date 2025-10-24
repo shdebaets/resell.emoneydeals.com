@@ -130,7 +130,7 @@ export default function Dashboard() {
                     <div className="mt-4 card p-4">
                         <div className="text-sm">
                             
-                            <span className="ml-2 text-white/70">Click one of the deals to unlock.</span>
+                            <span className="ml-2 text-white/70">Click one of the deals to unlock. ✅</span>
                         </div>
                     </div>
                 ) : null}
