@@ -182,9 +182,9 @@ export default function Dashboard() {
 
             <Modal open={open} onClose={() => setOpen(false)}>
                 <div className="items-center justify-center text-center">
-                    <h3 className="text-xl font-bold">ACCESS EMONEY NOW 🤫</h3>
+                    <h3 className="text-xl font-bold">WAIT! 🛑</h3>
                     <p className="text-sm text-white/70 mt-1">
-                        Unlock access to our Reselling Community Below
+                        To Unlock Your Deal & Free Access to eMoney Click Below
                     </p>
 
                 
