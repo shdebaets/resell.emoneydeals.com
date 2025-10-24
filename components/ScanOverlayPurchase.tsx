@@ -201,9 +201,9 @@ export default function ScanOverlayPurchase({
 
                     <SuccessHeroSlider
                         items={[
-                            { src: "/success/siteaipic.png.jpg", caption: "1) Find Clearance Products With AI " },
-                            { src: "/success/siteuploadpic.png.jpg", caption: "2) List them on Online Marketplaces" },
-                            { src: "/success/siteresellpic.png.jpg", caption: "3) Resell Them and Collect Profits" },
+                            { src: "/success/aicheck.png.jpg", caption: "1) Find Clearance Products With AI " },
+                            { src: "/success/listing.png.jpg", caption: "2) List them on Online Marketplaces" },
+                            { src: "/success/profit.png.jpg", caption: "3) Resell Them and Collect Profits" },
                            
                         ]}
                         height={300}
@@ -211,7 +211,7 @@ export default function ScanOverlayPurchase({
                         className="mx-auto mt-4"
                     />
 
-                    <p className="mt-2 text-xs text-white/50">Hang tight—dialing it in.</p>
+                    <p className="mt-2 text-xs text-white/50">The Steps To Success</p>
                 </div>
             </motion.div>
         </AnimatePresence>
