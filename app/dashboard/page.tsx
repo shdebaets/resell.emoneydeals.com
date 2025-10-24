@@ -201,9 +201,9 @@ export default function Dashboard() {
                             
                             
                             { src: "/success/IMG_8788.jpeg", caption: "TRADING CARD RELEASES" },
-                            { src: "/success/lego.png.jpg", caption: "HIGH DEMAND COLLECTIBLES TO RESELL" },
+                            { src: "/success/lego.png", caption: "HIGH DEMAND COLLECTIBLES TO RESELL" },
                             { src: "/success/penny.png", caption: "PENNY CLEARANCE ITEMS" },
-                            { src: "/success/random.png", caption: "RANDOM RESELLABLE ITEMS" },
+                            { src: "/success/IMG_0768.jpeg", caption: "RANDOM RESELLABLE ITEMS" },
                             
                             
                             
