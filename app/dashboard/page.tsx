@@ -215,7 +215,7 @@ export default function Dashboard() {
                 </div>
 
                 <div className="mt-3 flex items-center justify-center">
-                    <FomoBadge min={18} max={42} durationMs={15 * 60_000} />
+                    <FomoBadge min={200} max={450} durationMs={15 * 60_000} />
                 </div>
 
                 <div className="flex items-center justify-center">
@@ -224,8 +224,8 @@ export default function Dashboard() {
                     </button>
                 </div>
 
-                <div className="absolute top-0 right-0 w-16 h-16 rounded-full bg-red-600 flex items-center justify-center text-white font-bold text-sm -translate-x-0 -translate-y-1/3 shadow-glow">
-                        FREE TRIAL
+                <div className="absolute top-0 right-0 w-16 h-16 rounded-full bg-red-600 flex items-center justify-center text-white font-bold text-sm -translate-x-1/3 -translate-y-1/3 shadow-glow">
+                        <span className="text-center">FREE TRIAL</span>
                 </div>
             </Modal>
 
