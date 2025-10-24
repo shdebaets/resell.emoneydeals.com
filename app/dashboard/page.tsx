@@ -184,7 +184,7 @@ export default function Dashboard() {
                 <div className="items-center justify-center text-center">
                     <h3 className="text-xl font-bold">WAIT! 🛑</h3>
                     <p className="text-sm text-white/70 mt-1">
-                        To Unlock Your Deal & Free Access to eMoney Click Below
+                        To Unlock Your Deal & Free Access to eMoney Click Below ✅
                     </p>
 
                 
@@ -235,14 +235,14 @@ export default function Dashboard() {
 }
 
 function FomoBadge({
-    min = 170,
-    max = 330,
+    min = 200,
+    max = 400,
     durationMs = 15 * 60_000,
     autoReset = false,
     onExpire,
     label = "claimed in the last hour",
 }: FomoProps) {
-    const randInt = (a: number, b: number) => a + Math.floor(Math.random() * (b - a + 100));
+    const randInt = (a: number, b: number) => a + Math.floor(Math.random() * (b - a + 1));
     const [count] = useState(() => randInt(min, max));
     const endTs = useRef<number>(Date.now() + durationMs);
     const [remaining, setRemaining] = useState<number>(durationMs);
