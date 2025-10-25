@@ -91,6 +91,7 @@ export default function Dashboard() {
 
     function getDealItem(item: any) {
         setSelectedItem(item);
+        gaEvent("check_deal", {item});
         setScanning(true);
     }
 
