@@ -100,10 +100,10 @@ export default function ScanOverlay({
                     <SuccessHeroSlider
                         items={[
                            
-                            { src: "/success/emoneymain.jpeg", caption: "Welcome To The #1 Reselling Community, eMoney" },
-                            { src: "/success/reviews.png.jpg", caption: "With Over 1,000 5 Star Reviews" },
+                            { src: "/success/emoneymain.jpeg", caption: "Welcome To The #1 Reselling Community" },
+                            { src: "/success/reviews.png.jpg", caption: "With 1,000+ 5 Star Reviews" },
                            
-                            { src: "/success/5000.jpg", caption: "And Over 5,000 Active Resellers" },
+                            { src: "/success/5000.jpg", caption: "And 5,000+ Active Resellers" },
                         ]}
                         height={300}
                         autoplayMs={3200}
