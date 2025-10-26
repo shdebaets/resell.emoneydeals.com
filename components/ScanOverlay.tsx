@@ -19,7 +19,7 @@ export default function ScanOverlay({
     onDone,
     city,
     state,
-    totalMs = 6000,
+    totalMs = 9000,
 }: { zip: string; city: string | null; state: string | null; onDone: () => void; totalMs?: number }) {
     const [progress, setProgress] = useState(0);
     const raf = useRef<number | null>(null);
@@ -106,7 +106,7 @@ export default function ScanOverlay({
                             { src: "/success/5000.jpg", caption: "And Over 5,000 Active Resellers" },
                         ]}
                         height={300}
-                        autoplayMs={2000}
+                        autoplayMs={3200}
                         className="mx-auto"
                     />
 
