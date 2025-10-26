@@ -10,7 +10,7 @@ import SuccessHeroSlider from "@/components/SuccessHeroSlider";
 import { useSearchParams, useRouter } from "next/navigation";
 import ScanOverlayPurchase from "@/components/ScanOverlayPurchase";
 
-const SIGNUP_URL = "https://whop.com/checkout/plan_jsROYnKAs4HoZ?d2c=true";
+const SIGNUP_URL = "https://ai.emoneydeals.com";
 
 type ApiResp = { items: any[]; count: number };
 
@@ -84,7 +84,7 @@ export default function Dashboard() {
     function finalizeRoute() {
         const url = `${SIGNUP_URL}?src=dashboard_modal&zip=${encodeURIComponent(zip)}`;
         gaEvent("buy_click", { zip, url });
-        window.open(url, "_blank");
+        window.location.href = url;
     }
 
     const router = useRouter();
@@ -97,7 +97,7 @@ export default function Dashboard() {
 
     function openPurchaseOverlay() {
         setScanning(false);
-        setOpen(true);
+        finalizeRoute();
     }
 
     if (!isUSZip(zip) || !initialZip || !initialZip?.length) {
