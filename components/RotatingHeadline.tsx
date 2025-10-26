@@ -35,7 +35,7 @@ export default function RotatingHeadline() {
                     </motion.span>
                 </AnimatePresence>
             </span>{" "}
-            in your AREA.
+            in your area.
         </h1>
     );
 }
