@@ -19,7 +19,7 @@ type Props = {
 
 export default function SuccessBackdrop({
     images = [],
-    tiles = 18,
+    tiles = 0,
     intervalMs = 5200,
     fadeMs = 900,
     parallaxIntensity = 0.2,
