@@ -201,10 +201,10 @@ export default function Dashboard() {
                             { src: "/success/insaneclearance.jpg", caption: "UNLOCK EXCLUSIVE HIDDEN CLEARANCE DEALS" },
                             
                             
-                            { src: "/success/IMG_8788.jpeg", caption: "UNLOCK TRADING CARD RELEASES" },
-                            { src: "/success/lego.png", caption: "UNLOCK HIGH DEMAND COLLECTIBLES TO RESELL" },
-                            { src: "/success/penny.png", caption: "UNLOCK PENNY CLEARANCE ITEMS" },
-                            { src: "/success/IMG_0768.jpeg", caption: "UNLOCK RANDOM RESELLABLE ITEMS" },
+                            { src: "/success/pokemoncar.jpg", caption: "UNLOCK TRADING CARD RELEASES" },
+                            { src: "/success/lego.jpg", caption: "UNLOCK HIGH DEMAND COLLECTIBLES TO RESELL" },
+                            { src: "/success/penny.jpg", caption: "UNLOCK PENNY CLEARANCE ITEMS" },
+                            { src: "/success/tools.jpg", caption: "UNLOCK RANDOM RESELLABLE ITEMS" },
                             
                             
                             
