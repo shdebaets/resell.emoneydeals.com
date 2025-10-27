@@ -5,7 +5,7 @@ import RotatingHeadline from "@/components/RotatingHeadline";
 import ScanOverlay from "@/components/ScanOverlay";
 import { isUSZip, cleanUSZip } from "@/lib/zip";
 import SuccessBackdrop from "@/components/SuccessBackdrop";
-import ProofStrip from "@/components/ProofStrip";
+import ProofStrip from "@/components/ProofStrip"; 
 import { gaEvent } from "@/app/(lib)/ga";
 
 export default function Landing() {
